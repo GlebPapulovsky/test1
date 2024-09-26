@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Client1 {
 
-    static String host = "188.170.82.93";// хост моего компьютера
+    static String host = "192.168.8.100";// хост моего компьютера
     static int port = 8090;
 
     private  static  final String EXITCHAT = "/exit";

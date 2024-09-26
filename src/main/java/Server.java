@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -14,11 +15,11 @@ public class Server {
         System.out.println("Start server");
         int port = 8090;
 
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
+        try (ServerSocket serverSocket = new ServerSocket(port,0, InetAddress.getByName("192.168.8.100"))) {
             while (true) {
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    sendMessToAll("? ???? ??????????? ????? ????????: " + clientSocket.getPort());
+                    sendMessToAll("new socket: " + clientSocket.getPort());
                     new Thread(() -> {
                         try (PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) { // ????? ?????? ? ?????
                             User user = new User(clientSocket, out);
